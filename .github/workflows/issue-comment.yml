@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Gif Comment
+
+# Controls when the action will run. 
+on:
+  issues:
+    types: [opened]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  gif:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Gif
+        uses: Marta83/funny-comment-action@v2.1
+        id: gif
+        with:
+          GITHUB_TOKEN: ${{GITHUB_TOKEN}}
+          GIPHY_TOKEN: ${{GIPHY_TOKEN}} 
+          comment_type:: 'gif'   
+        
+      
